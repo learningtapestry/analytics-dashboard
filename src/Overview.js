@@ -18,9 +18,9 @@ class Overview extends Component {
     request.send();
 
     return (
-      <div className="total-visits panel panel-default">
+      <div className="overview panel panel-default">
         <div className="panel-heading">
-          <h1 className="panel-title">Total visits:</h1>
+          <h1 className="panel-title">Overview:</h1>
         </div>
 
         <div className="panel-body">
