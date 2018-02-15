@@ -1,15 +1,12 @@
-import React, { Component } from 'react';
 import './App.css';
+
+import React, { Component } from 'react';
+
+import Overview from './Overview.js';
 
 class App extends Component {
   render() {
-    console.log('wfp');
-
-    return (
-      <div className="App">
-        Hello World!
-      </div>
-    );
+    return <Overview />;
   }
 }
 
