@@ -1,7 +1,12 @@
 body {
-  background-color: #eee;
+  background-color: #fff;
   color: #555;
   padding: 0px 10px;
+}
+
+#root {
+  width: 1000px;
+  margin: 30px 15px;
 }
 
 .panel {
