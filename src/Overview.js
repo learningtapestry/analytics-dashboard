@@ -18,24 +18,20 @@ class Overview extends Component {
   fetchData() {
     const analyticsUrl = 'http://localhost:8080';
 
-    const request = new XMLHttpRequest();
-
-    request.addEventListener('load', () => {
-      var response = camelCaseKeys(request.response);
-
-      this.setState({
-        totalVisitCount: response.totalVisitCount,
-        mostRecentVisitDate: response.mostRecentVisitDate
+    fetch(analyticsUrl + '/data/overview').
+      then(response => {
+        return response.json();
+      }).
+      then(camelCaseKeys).
+      then(json => {
+        this.setState({
+          totalVisitCount: json.totalVisitCount,
+          mostRecentVisitDate: json.mostRecentVisitDate
+        });
+      }).
+      catch(() => {
+        console.error('Failed to fetch analytics data from server');
       });
-    });
-
-    request.addEventListener('error', () => {
-      console.error('Failed to fetch analytics data from server');
-    });
-
-    request.responseType = 'json';
-    request.open('GET', analyticsUrl + '/data/overview');
-    request.send();
   }
 
   render() {

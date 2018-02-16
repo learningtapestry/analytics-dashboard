@@ -24,24 +24,19 @@ class VisitsByPage extends Component {
 
   fetchData(timeRange) {
     const analyticsUrl = 'http://localhost:8080';
-    const request = new XMLHttpRequest();
 
-    request.addEventListener('load', () => {
-      var response = camelCaseKeys(request.response);
-
-      this.setState({
-        visitsByPage: response
+    fetch(analyticsUrl + '/data/visits_by_page?range=' + timeRange).
+      then(response => {
+        return response.json();
+      }).
+      then(json => {
+        this.setState({
+          visitsByPage: json
+        });
+      }).
+      catch(() => {
+        console.error('Failed to fetch analytics data from server');
       });
-    });
-
-    request.addEventListener('error', () => {
-      console.error('Failed to fetch analytics data from server');
-    });
-
-    request.responseType = 'json';
-    request.open('GET',
-      analyticsUrl + '/data/visits_by_page?range=' + timeRange);
-    request.send();
   }
 
   widthFactor(visitsByPage) {
