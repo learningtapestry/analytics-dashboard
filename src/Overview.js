@@ -12,6 +12,10 @@ class Overview extends Component {
   }
 
   componentDidMount() {
+    this.fetchData();
+  }
+
+  fetchData() {
     const analyticsUrl = 'http://localhost:8080';
 
     const request = new XMLHttpRequest();

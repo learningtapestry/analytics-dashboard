@@ -1,8 +1,88 @@
 import './VisitsByPage.css';
 
 import React, { Component } from 'react';
+import * as d3 from 'd3';
+import camelCaseKeys from 'camelcase-keys';
 
 class VisitsByPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      timeRange: 'day'
+    };
+  }
+
+  componentDidMount() {
+    this.updateBarChart(this.state.timeRange);
+  }
+
+  updateBarChart(timeRange) {
+    const analyticsUrl = 'http://localhost:8080';
+
+    const request = new XMLHttpRequest();
+
+    request.addEventListener('load', () => {
+      var response = camelCaseKeys(request.response);
+
+      this.setState({
+        visitsByPage: response
+      });
+
+      this.renderBarChart(this.state.visitsByPage);
+    });
+
+    request.addEventListener('error', () => {
+      console.error('Failed to fetch analytics data from server');
+    });
+
+    request.responseType = 'json';
+    request.open('GET',
+      analyticsUrl + '/data/visits_by_page?range=' + timeRange);
+    request.send();
+  }
+
+  widthFactor(visitsByPage) {
+    const mostVisitedPage = Object.entries(visitsByPage).reduce((acc, current) => {
+      return current[1] > acc[1] ? current : acc;
+    });
+
+    return (document.querySelector('.visits-by-page').clientWidth - 20) /
+      mostVisitedPage[1];
+  }
+
+  renderBarChart(visitsByPage) {
+    const urls = Object.keys(visitsByPage);
+
+    const widthFactor = this.widthFactor(visitsByPage);
+
+    document.querySelector('.page-chart').innerHTML = null;
+
+    var bar = d3.
+      select('.page-chart').
+      selectAll('div').
+      data(urls).
+      enter().
+      append('div').
+      style('width', function(url) {
+        return (widthFactor * visitsByPage[url]) + 'px';
+      });
+
+    bar.
+      append('span').
+      classed('url', true).
+      text(function(url) {
+        return url;
+      });
+
+    bar.
+      append('span').
+      classed('count', true).
+      text(function(url) {
+        return visitsByPage[url];
+      });
+  }
+
   render() {
     return (
       <div className="visits-by-page panel panel-default">
