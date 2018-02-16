@@ -9,15 +9,20 @@ class VisitsByPage extends Component {
     super(props);
 
     this.state = {
-      timeRange: 'day'
+      timeRange: 'day',
+      visitsByPage: null
     };
   }
 
   componentDidMount() {
-    this.updateBarChart(this.state.timeRange);
+    this.fetchData(this.state.timeRange);
   }
 
-  updateBarChart(timeRange) {
+  componentDidUpdate() {
+    this.renderBarChart(this.state.visitsByPage);
+  }
+
+  fetchData(timeRange) {
     const analyticsUrl = 'http://localhost:8080';
 
     const request = new XMLHttpRequest();
@@ -28,8 +33,6 @@ class VisitsByPage extends Component {
       this.setState({
         visitsByPage: response
       });
-
-      this.renderBarChart(this.state.visitsByPage);
     });
 
     request.addEventListener('error', () => {
@@ -58,7 +61,7 @@ class VisitsByPage extends Component {
 
     document.querySelector('.page-chart').innerHTML = null;
 
-    var bar = d3.
+    const bar = d3.
       select('.page-chart').
       selectAll('div').
       data(urls).
@@ -83,7 +86,17 @@ class VisitsByPage extends Component {
       });
   }
 
+  onTimeRangeButtonClick(timeRange) {
+    this.setState({
+      timeRange
+    });
+
+    this.fetchData(timeRange);
+  }
+
   render() {
+    const btnClass = 'btn btn-default ';
+
     return (
       <div className="visits-by-page panel panel-default">
         <div className="panel-heading">
@@ -92,13 +105,22 @@ class VisitsByPage extends Component {
 
         <div className="panel-body">
           <div className="btn-group" role="group">
-            <button type="button" id="day-button" className="btn btn-default active">
+            <button type="button"
+              className={btnClass + (this.state.timeRange === 'day' ? 'active' : null)}
+              onClick={this.onTimeRangeButtonClick.bind(this, 'day')}>
+
               1 day
             </button>
-            <button type="button" id="week-button" className="btn btn-default">
+            <button type="button"
+              className={btnClass + (this.state.timeRange === 'week' ? 'active' : null)}
+              onClick={this.onTimeRangeButtonClick.bind(this, 'week')}>
+
               7 days
             </button>
-            <button type="button" id="month-button" className="btn btn-default">
+            <button type="button"
+              className={btnClass + (this.state.timeRange === 'month' ? 'active' : null)}
+              onClick={this.onTimeRangeButtonClick.bind(this, 'month')}>
+
               30 days
             </button>
           </div>
