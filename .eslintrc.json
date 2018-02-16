@@ -22,7 +22,8 @@
       "warn", {
         "allow": ["error"]
       }
-    ]
+    ],
+    "no-unused-vars": ["warn"]
   }
 }
 
