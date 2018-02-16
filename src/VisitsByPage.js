@@ -24,7 +24,6 @@ class VisitsByPage extends Component {
 
   fetchData(timeRange) {
     const analyticsUrl = 'http://localhost:8080';
-
     const request = new XMLHttpRequest();
 
     request.addEventListener('load', () => {

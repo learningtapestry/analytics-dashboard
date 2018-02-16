@@ -1,23 +1,23 @@
-.time-range {
+.visits-by-page .time-range {
   margin-bottom: 30px;
 }
 
-.page-chart {
+.visits-by-page .page-chart {
   margin: 10px 0px 15px 8px;
 }
 
-.page-chart div {
+.visits-by-page .page-chart div {
   background-color: #eee;
   color: #777;
   padding: 3px;
   margin: 5px;
 }
 
-.page-chart div .url {
+.visits-by-page .page-chart div .url {
   padding-left: 5px;
 }
 
-.page-chart div .count {
+.visits-by-page .page-chart div .count {
   float: right;
   padding-right: 5px;
 }
