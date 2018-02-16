@@ -2,7 +2,10 @@
   "env": {
     "browser": true
   },
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
   "globals": {
   },
   "parserOptions": {
@@ -13,6 +16,11 @@
     "max-len": [
       "error", {
         "code": 90
+      }
+    ],
+    "no-console": [
+      "error", {
+        "allow": ["error"]
       }
     ]
   }
