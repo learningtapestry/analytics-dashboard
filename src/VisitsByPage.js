@@ -2,7 +2,6 @@ import './VisitsByPage.css';
 
 import React, { Component } from 'react';
 import * as d3 from 'd3';
-import camelCaseKeys from 'camelcase-keys';
 
 class VisitsByPage extends Component {
   constructor(props) {
