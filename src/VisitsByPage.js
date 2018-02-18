@@ -48,11 +48,15 @@ class VisitsByPage extends Component {
   }
 
   renderBarChart(visitsByPage) {
+    document.querySelector('.page-chart').innerHTML = null;
+
+    if(Object.keys(visitsByPage).length === 0) {
+      return;
+    }
+
     const urls = Object.keys(visitsByPage);
 
     const widthFactor = this.widthFactor(visitsByPage);
-
-    document.querySelector('.page-chart').innerHTML = null;
 
     const bar = d3.
       select('.page-chart').
