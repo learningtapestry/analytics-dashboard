@@ -31,7 +31,7 @@ class ServerSelector extends Component {
               Localhost
             </option>
             <option value="http://cobra.analytics.qa.c66.me">
-              Development
+              QA
             </option>
             <option value="http://pelican.analytics-606785.staging.c66.me">
               Staging
