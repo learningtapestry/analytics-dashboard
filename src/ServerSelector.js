@@ -10,7 +10,8 @@ class ServerSelector extends Component {
     this.onServerMenuChange = this.onServerMenuChange.bind(this);
   }
 
-  onServerMenuChange() {
+  onServerMenuChange(evt) {
+    this.props.onServerChange(evt.target.value);
   }
 
   render() {
@@ -26,16 +27,16 @@ class ServerSelector extends Component {
             value={this.props.server}
             onChange={this.onServerMenuChange}>
 
-            <option value="https://localhost:8080">
+            <option value="http://localhost:8080">
               Localhost
             </option>
-            <option value="https://cobra.analytics.qa.c66.me">
+            <option value="http://cobra.analytics.qa.c66.me">
               Development
             </option>
-            <option value="https://pelican.analytics-606785.staging.c66.me">
+            <option value="http://pelican.analytics-606785.staging.c66.me">
               Staging
             </option>
-            <option value="https://hare.analytics-257436.c66.me">
+            <option value="http://hare.analytics-257436.c66.me">
               Production
             </option>
           </select>
@@ -46,7 +47,8 @@ class ServerSelector extends Component {
 }
 
 ServerSelector.propTypes = {
-  server: PropTypes.string.isRequired
+  server: PropTypes.string.isRequired,
+  onServerChange: PropTypes.func.isRequired
 };
 
 export default ServerSelector;

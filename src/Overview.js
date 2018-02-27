@@ -16,6 +16,12 @@ class Overview extends Component {
     this.fetchData();
   }
 
+  componentDidUpdate(prevProps) {
+    if(prevProps.server != this.props.server) {
+      this.fetchData();
+    }
+  }
+
   fetchData() {
     fetch(this.props.server + '/data/overview').
       then(response => {
@@ -29,7 +35,10 @@ class Overview extends Component {
         });
       }).
       catch(() => {
-        console.error('Failed to fetch analytics data from server');
+        this.setState({
+          totalVisitCount: 'N/A',
+          mostRecentVisitDate: 'N/A'
+        });
       });
   }
 

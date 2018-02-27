@@ -14,12 +14,21 @@ class App extends Component {
     this.state = {
       server: 'http://localhost:8080'
     };
+
+    this.onServerChange = this.onServerChange.bind(this);
+  }
+
+  onServerChange(server) {
+    this.setState({
+      server: server
+    });
   }
 
   render() {
     return (
       <div>
-        <ServerSelector server={this.state.server}/>
+        <ServerSelector server={this.state.server}
+          onServerChange={this.onServerChange}/>
         <Overview server={this.state.server}/>
         <UserHistory server={this.state.server}/>
         <VisitsByPage server={this.state.server}/>

@@ -13,6 +13,12 @@ class UserHistory extends Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if(prevProps.server != this.props.server) {
+      this.fetchUserHistory();
+    }
+  }
+
   onUserSearchKeyDown(evt) {
     if(evt.key === 'Enter') {
       this.fetchUserHistory();
@@ -33,7 +39,9 @@ class UserHistory extends Component {
         });
       }).
       catch(() => {
-        console.error('Failed to fetch analytics data from server');
+        this.setState({
+          history: []
+        });
       });
   }
 
@@ -54,9 +62,6 @@ class UserHistory extends Component {
           </tbody>
         </table>
       );
-    }
-    else {
-      return 'No history found for that user';
     }
   }
 

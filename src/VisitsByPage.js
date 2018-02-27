@@ -18,7 +18,13 @@ class VisitsByPage extends Component {
     this.fetchData(this.state.timeRange);
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
+    if(prevProps.server != this.props.server ||
+      prevState.timeRange != this.state.timeRange) {
+
+      this.fetchData(this.state.timeRange);
+    }
+
     this.renderBarChart(this.state.visitsByPage);
   }
 
@@ -33,7 +39,9 @@ class VisitsByPage extends Component {
         });
       }).
       catch(() => {
-        console.error('Failed to fetch analytics data from server');
+        this.setState({
+          visitsByPage: []
+        });
       });
   }
 
@@ -86,8 +94,6 @@ class VisitsByPage extends Component {
     this.setState({
       timeRange
     });
-
-    this.fetchData(timeRange);
   }
 
   render() {
