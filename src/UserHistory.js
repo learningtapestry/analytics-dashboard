@@ -1,6 +1,7 @@
 import './UserHistory.css';
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import camelCaseKeys from 'camelcase-keys';
 
 class UserHistory extends Component {
@@ -19,10 +20,9 @@ class UserHistory extends Component {
   }
 
   fetchUserHistory() {
-    const analyticsUrl = 'http://localhost:8080';
     const user = document.querySelector('.user-search').value;
 
-    fetch(analyticsUrl + '/data/user_history?user=' + user).
+    fetch(this.props.server + '/data/user_history?user=' + user).
       then(response => {
         return response.json();
       }).
@@ -90,5 +90,9 @@ class UserHistory extends Component {
     );
   }
 }
+
+UserHistory.propTypes = {
+  server: PropTypes.string.isRequired
+};
 
 export default UserHistory;

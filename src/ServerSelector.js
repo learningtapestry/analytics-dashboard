@@ -1,22 +1,16 @@
 import './ServerSelector.css';
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class ServerSelector extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      server: 'https://localhost:8080'
-    };
-
     this.onServerMenuChange = this.onServerMenuChange.bind(this);
   }
 
-  onServerMenuChange(evt) {
-    this.setState({
-      server: evt.target.value
-    });
+  onServerMenuChange() {
   }
 
   render() {
@@ -29,7 +23,7 @@ class ServerSelector extends Component {
         <div className="panel-body">
           <select name="server-menu"
             className="form-control"
-            value={this.state.server}
+            value={this.props.server}
             onChange={this.onServerMenuChange}>
 
             <option value="https://localhost:8080">
@@ -50,5 +44,9 @@ class ServerSelector extends Component {
     );
   }
 }
+
+ServerSelector.propTypes = {
+  server: PropTypes.string.isRequired
+};
 
 export default ServerSelector;

@@ -1,6 +1,7 @@
 import './VisitsByPage.css';
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import * as d3 from 'd3';
 
 class VisitsByPage extends Component {
@@ -22,9 +23,7 @@ class VisitsByPage extends Component {
   }
 
   fetchData(timeRange) {
-    const analyticsUrl = 'http://localhost:8080';
-
-    fetch(analyticsUrl + '/data/visits_by_page?range=' + timeRange).
+    fetch(this.props.server + '/data/visits_by_page?range=' + timeRange).
       then(response => {
         return response.json();
       }).
@@ -128,5 +127,9 @@ class VisitsByPage extends Component {
     );
   }
 }
+
+VisitsByPage.propTypes = {
+  server: PropTypes.string.isRequired
+};
 
 export default VisitsByPage;

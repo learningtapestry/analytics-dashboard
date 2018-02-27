@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import camelCaseKeys from 'camelcase-keys';
 
 class Overview extends Component {
@@ -16,9 +17,7 @@ class Overview extends Component {
   }
 
   fetchData() {
-    const analyticsUrl = 'http://localhost:8080';
-
-    fetch(analyticsUrl + '/data/overview').
+    fetch(this.props.server + '/data/overview').
       then(response => {
         return response.json();
       }).
@@ -55,5 +54,9 @@ class Overview extends Component {
     );
   }
 }
+
+Overview.propTypes = {
+  server: PropTypes.string.isRequired
+};
 
 export default Overview;
