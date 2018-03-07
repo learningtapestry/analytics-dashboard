@@ -8,7 +8,8 @@
   ],
   "globals": {
     "require": false,
-    "process": false
+    "process": false,
+    "__dirname": false
   },
   "parserOptions": {
     "ecmaVersion": 6,
