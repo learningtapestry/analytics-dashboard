@@ -6,4 +6,4 @@ COPY . /usr/src/app
 
 EXPOSE 3000
 RUN npm install
-CMD ["npm", "start"]
+CMD ["npm", "run", "server"]
