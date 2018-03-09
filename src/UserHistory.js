@@ -45,26 +45,6 @@ class UserHistory extends Component {
       });
   }
 
-  renderHistory() {
-    if(this.state.history.length > 0) {
-      return (
-        <table>
-          <tbody>
-            {this.state.history.map((entry, i) => {
-              return (
-                <tr key={i}>
-                  <td>{entry.url}</td>
-                  <td>{entry.dateVisited}</td>
-                  <td>{entry.timeActive}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      );
-    }
-  }
-
   render() {
     return (
       <div className="user-history panel panel-default">
@@ -88,7 +68,7 @@ class UserHistory extends Component {
           </div>
 
           <div className="history">
-            {this.renderHistory()}
+            <ItemList items={this.state.history}/>
           </div>
         </div>
       </div>
@@ -98,6 +78,33 @@ class UserHistory extends Component {
 
 UserHistory.propTypes = {
   server: PropTypes.string.isRequired
+};
+
+
+const ItemList = (props) => {
+  if(props.items.length === 0) {
+    return null;
+  }
+
+  return (
+    <table>
+      <tbody>
+        {props.items.map((entry, i) => {
+          return (
+            <tr key={i}>
+              <td>{entry.url}</td>
+              <td>{entry.dateVisited}</td>
+              <td>{entry.timeActive}</td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  );
+}
+
+ItemList.propTypes = {
+  items: PropTypes.array.isRequired
 };
 
 export default UserHistory;
