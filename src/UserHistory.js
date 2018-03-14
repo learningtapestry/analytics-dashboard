@@ -28,7 +28,13 @@ class UserHistory extends Component {
   fetchUserHistory() {
     const user = document.querySelector('.user-search').value;
 
-    fetch(this.props.server + '/data/user_history?user=' + user).
+    fetch(this.props.server + '/data/user_history?user=' + user, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Token abc123'
+      }
+    }).
       then(response => {
         return response.json();
       }).
