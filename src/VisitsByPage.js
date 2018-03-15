@@ -30,7 +30,6 @@ class VisitsByPage extends Component {
 
   fetchData(timeRange) {
     fetch(this.props.server + '/data/visits_by_page?range=' + timeRange, {
-      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Token abc123'

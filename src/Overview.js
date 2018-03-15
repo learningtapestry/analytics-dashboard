@@ -24,7 +24,6 @@ class Overview extends Component {
 
   fetchData() {
     fetch(this.props.server + '/data/overview', {
-      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Token abc123'
