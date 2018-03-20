@@ -1,0 +1,24 @@
+body {
+  background-color: #fff;
+  color: #555;
+  padding: 0px 10px;
+  margin: 0px 15px;
+  width: 1040px;
+}
+
+.sign-in .panel {
+  margin-top: 30px;
+}
+
+.sign-in .panel .panel-title {
+  font-weight: bold;
+}
+
+.sign-in .field {
+  width: 300px;
+  padding-bottom: 5px;
+}
+
+.sign-in .actions {
+  padding-bottom: 5px;
+}

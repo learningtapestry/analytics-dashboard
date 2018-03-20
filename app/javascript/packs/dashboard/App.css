@@ -6,7 +6,9 @@ body {
 
 #root {
   width: 1000px;
-  margin: 30px 15px;
+  margin: 0px 15px;
+  padding-top: 10px;
+  clear: right;
 }
 
 .panel {
