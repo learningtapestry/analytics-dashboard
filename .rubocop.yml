@@ -1,0 +1,10 @@
+Metrics/LineLength:
+  Max: 90
+Metrics/MethodLength:
+  Max: 15
+Layout/DotPosition:
+  EnforcedStyle: trailing
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+Style/Documentation:
+  Enabled: false
