@@ -1,5 +1,7 @@
-<% if user_signed_in? %>
-  <div class="logout">
-    <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
-  </div>
-<% end %>
+<div class="logout">
+  <% if user_signed_in? %>
+    <div class="logout-link">
+      <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+    </div>
+  <% end %>
+</div>
