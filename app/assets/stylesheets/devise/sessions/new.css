@@ -1,16 +1,21 @@
 body {
   background-color: #fff;
   color: #555;
-  padding: 0px 10px;
+  padding: 0px 20px;
+}
+
+.content {
+  width: 1000px;
   margin: 0px 15px;
-  width: 1040px;
+  padding-top: 10px;
+  clear: right;
 }
 
-.sign-in .panel {
-  margin-top: 30px;
+.panel {
+  margin-top: 10px;
 }
 
-.sign-in .panel .panel-title {
+.panel .panel-title {
   font-weight: bold;
 }
 

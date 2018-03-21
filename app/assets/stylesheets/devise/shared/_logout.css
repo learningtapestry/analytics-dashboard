@@ -1,8 +1,13 @@
 .logout {
-  float: right;
-  padding: 10px;
+  text-align: right;
+  width: 1000px;
+  height: 30px;
+  margin-left: 15px;
+  border-bottom: 1px solid #ccc;
+  padding-top: 5px;
 }
 
 .logout a {
+  padding: 15px;
   font-size: 16px;
 }
