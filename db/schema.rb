@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180321155634) do
+ActiveRecord::Schema.define(version: 20180321223445) do
 
   create_table "lti_consumers", force: :cascade do |t|
     t.string "name", null: false
     t.string "key", null: false
     t.string "encrypted_secret", null: false
     t.string "encrypted_secret_iv", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lti_nonces", force: :cascade do |t|
+    t.string "lti_consumer_key"
+    t.string "value"
+    t.integer "timestamp", limit: 8
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

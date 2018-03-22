@@ -6,5 +6,11 @@ Layout/DotPosition:
   EnforcedStyle: trailing
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
+Layout/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
 Style/Documentation:
+  Enabled: false
+Style/IfUnlessModifier:
+  Enabled: false
+Style/MultilineTernaryOperator:
   Enabled: false

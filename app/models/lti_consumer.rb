@@ -1,4 +1,8 @@
+# frozen_string_literal: true
+
 class LtiConsumer < ApplicationRecord
+  NO_SUCH_CONSUMER = 'NO_SUCH_CONSUMER'
+
   attr_encrypted :secret,
     key: Rails.env.production? ?
       ENV['LTI_CONSUMER_ENCRYPTION_KEY'] :
