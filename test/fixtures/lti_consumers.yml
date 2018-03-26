@@ -1,0 +1,5 @@
+one:
+  name: Test Consumer
+  key: abc
+  encrypted_secret: <%= LtiConsumer.encrypt_secret('abc123', iv: 'iviviviviviv') %>
+  encrypted_secret_iv: iviviviviviv
